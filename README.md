@@ -36,5 +36,5 @@ Questo è un progetto open-source sviluppato in collaborazione.
 * **Ultimo Aggiornamento**: 28 ottobre 2025
 
 ## Collegati
-* [Manuale d'uso](https://github.com/alexpvk75/SIMULATORE-ALU-74181-O.PAVLYK/blob/main/manuale.md)
+* [Manuale d'uso](https://github.com/beginner874/Alu-74181-Davide-Yu/blob/main/manuale.md)
 * [Schema dell'ALU interattiva](https://circuitverse.org/users/311719/projects/alu-74181-final)
