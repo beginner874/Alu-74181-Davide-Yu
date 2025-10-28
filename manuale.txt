@@ -1,0 +1,239 @@
+====================================================================
+                     MANUALE UTENTE - SIMULATORE ALU 74181
+====================================================================
+
+────────────────────────────────────────────────────────────────────
+▶ DESCRIZIONE BREVE
+────────────────────────────────────────────────────────────────────
+Questo programma è un Simulatore di Unità Aritmetica e Logica (ALU) 74181. 
+L'ALU è il "cervello" di un computer, responsabile delle operazioni 
+matematiche (Aritmetica) e logiche (AND, OR, NOT). 
+
+Lo strumento è progettato per scopi didattici e per testare le funzioni 
+logiche del chip 74181.
+
+────────────────────────────────────────────────────────────────────
+▶ ISTRUZIONI DI AVVIO
+────────────────────────────────────────────────────────────────────
+
+1. Nella pagina del progetto premi il tasto "Code" per creare e attivare
+   un nuovo ambiente di sviluppo virtuale (codespace).
+
+2. Compila il codice sorgente C e crea l'eseguibile:
+      gcc main.c -o simulatore
+
+3. Avvia l'eseguibile:
+      ./simulatore
+
+4. Apparirà il menu principale:
+
+   ===========================================================
+   =                   SIMULATORE ALU 74181                 =
+   ===========================================================
+   [0] Esci
+   [1] ALU 74181 a 4 bit
+   [2] ALU 74181 a 4 bit (con clock)
+   [3] Convertitore Binario → Decimale
+   [4] Convertitore Decimale → Binario
+   [5] ALU a 32 bit - 8x74181
+   [6] ALU a 32 bit - 8x74181 (con clock)
+   ===========================================================
+
+────────────────────────────────────────────────────────────────────
+▶ DESCRIZIONE DELLE FUNZIONI
+────────────────────────────────────────────────────────────────────
+
+ Opzione | Nome Funzione                        | Descrizione
+─────────┼──────────────────────────────────────┼─────────────────────────────
+   0     | Esci                                 | Chiude il programma
+   1     | ALU 74181 a 4 bit                    | Simulazione base a 4 bit
+   2     | ALU 74181 a 4 bit (con clock)        | Versione con ritardo (clock)
+   3     | Convertitore Binario → Decimale      | Conversione binario → decimale
+   4     | Convertitore Decimale → Binario      | Conversione decimale → binario
+   5     | ALU a 32 bit - 8x74181               | Simulazione ALU a 32 bit
+   6     | ALU a 32 bit - 8x74181 (con clock)   | Versione con ritardo (clock)
+─────────┴──────────────────────────────────────┴─────────────────────────────
+
+
+====================================================================
+                   1. OPERAZIONI LOGICHE (ALU 74181 - 4 BIT)
+====================================================================
+
+MODALITÀ DI INPUT
+─────────────────
+Dopo aver selezionato [1], il programma chiederà:
+   Inserire dati manualmente? (S/N):
+
+Rispondere:
+   - S → inserimento da tastiera
+   - N → lettura da file "input_alu.txt"
+
+────────────────────────────────────────────────────────────────────
+SEZIONE A: INSERIMENTO MANUALE (S)
+────────────────────────────────────────────────────────────────────
+
+Inserire i valori 0 o 1 per:
+
+   • Cn  → Segnale di Carry-in (riporto)
+   • M   → Selettore di modalità (0=aritmetica, 1=logica)
+   • S0–S3 → Selettori di operazione
+   • A0–A3, B0–B3 → Operandi binari (4 bit ciascuno)
+
+────────────────────────────────────────────────────────────────────
+OUTPUT E RISULTATI
+────────────────────────────────────────────────────────────────────
+
+╔═══════════════════════════════════════════════╗
+║           RISULTATI ALU 74181                 ║
+╠═══════════════════════════════════════════════╣
+║  F0  = ...                                    ║
+║  F1  = ...                                    ║
+║  F2  = ...                                    ║
+║  F3  = ...                                    ║
+║  Cn+4 = ...                                   ║
+║  A=B  = ...                                   ║
+║  P    = ...                                   ║
+║  G    = ...                                   ║
+╚═══════════════════════════════════════════════╝
+
+I risultati vengono anche salvati in:
+   risultati_alu_74181.txt
+
+────────────────────────────────────────────────────────────────────
+SEZIONE B: INSERIMENTO TRAMITE FILE (N)
+────────────────────────────────────────────────────────────────────
+
+File richiesto:  input_alu.txt
+Il programma lo genera automaticamente se mancante.
+
+Formato del file:
+   Cn: <0>
+   M:  <0>
+   A0: <0>   B0: <0>
+   A1: <0>   B1: <0>
+   A2: <0>   B2: <0>
+   A3: <0>   B3: <0>
+   S0: <0>   S1: <0>   S2: <0>   S3: <0>
+
+────────────────────────────────────────────────────────────────────
+2. ALU 74181 A 4 BIT (CON CLOCK)
+────────────────────────────────────────────────────────────────────
+Identica all’opzione [1], ma con ritardo fisso per simulare il tempo 
+di propagazione del circuito logico.
+
+────────────────────────────────────────────────────────────────────
+3. CONVERTITORE BINARIO → DECIMALE
+────────────────────────────────────────────────────────────────────
+
+Input:
+   • Manuale (S) → Inserisci numero binario
+   • Da file (N) → File "input_bin.txt"
+
+Output:
+   ╔═════════════════════════════════════════════╗
+   ║        RISULTATI CONVERTITORE               ║
+   ╚═════════════════════════════════════════════╝
+   Risultato = <...>
+
+Risultato salvato in "risultati_dec.txt".
+
+────────────────────────────────────────────────────────────────────
+4. CONVERTITORE DECIMALE → BINARIO
+────────────────────────────────────────────────────────────────────
+
+Input:
+   • Manuale (S) → Inserisci numero decimale
+   • Da file (N) → File "input_dec.txt"
+
+Output:
+   ╔═════════════════════════════════════════════╗
+   ║        RISULTATI CONVERTITORE               ║
+   ╚═════════════════════════════════════════════╝
+   Risultato = <...>
+
+Risultato salvato in "risultati_bin.txt".
+
+────────────────────────────────────────────────────────────────────
+5–6. ALU A 32 BIT (8x74181)
+────────────────────────────────────────────────────────────────────
+
+Simula 8 chip 74181 collegati in cascata.
+L'opzione [6] include il clock (ritardo).
+
+Input:
+   Operandi: A0–A31, B0–B31
+   Segnali:  Cn, M, S0–S3
+
+Modalità:
+   • Manuale (S)
+   • Da file (N): "input_alu32.txt"
+
+Output:
+   ╔═════════════════════════════════════════════╗
+   ║           RISULTATI ALU 32 BIT              ║
+   ╚═════════════════════════════════════════════╝
+   Risultato = <...>
+
+Risultato salvato in "risultati_alu32.txt".
+
+────────────────────────────────────────────────────────────────────
+TABELLA DI RIFERIMENTO FUNZIONI ALU (OPZIONI 1, 2, 5, 6)
+────────────────────────────────────────────────────────────────────
+
+| M | S3 | S2 | S1 | S0 | Cn | Operazione | 
+|---|----|----|----|----|----|------------|
+| 1 | 0  | 0  | 0  | 0  | X  | F = NOT(A)|
+| 1 | 0  | 0  | 0  | 1  | X  | F = NOT(A + B) |
+| 1 | 0  | 0  | 1  | 0  | X  | F = NOT(A)*B |
+| 1 | 0  | 0  | 1  | 1  | X  | F = 0 |
+| 1 | 0  | 1  | 0  | 0  | X  | F = NOT(AB) |
+| 1 | 0  | 1  | 0  | 1  | X  | F = NOT(B) |
+| 1 | 0  | 1  | 1  | 0  | X  | F = A ⊕ B |
+| 1 | 0  | 1  | 1  | 1  | X  | F = A*NOT(B) |
+| 1 | 1  | 0  | 0  | 0  | X  | F = NOT(A)+B |
+| 1 | 1  | 0  | 0  | 1  | X  | F = NOT(A ⊕ B) |
+| 1 | 1  | 0  | 1  | 0  | X  | F = B |
+| 1 | 1  | 0  | 1  | 1  | X  | F = AB |
+| 1 | 1  | 1  | 0  | 0  | X  | F = 1 |
+| 1 | 1  | 1  | 0  | 1  | X  | F = A + NOT(B) |
+| 1 | 1  | 1  | 1  | 0  | X  | F = A + B |
+| 1 | 1  | 1  | 1  | 1  | X  | F = A |
+| 0 | 0  | 0  | 0  | 0  | 0  | F = A PLUS 1 |
+| 0 | 0  | 0  | 0  | 1  | 0  | F = (A + B) PLUS 1 |
+| 0 | 0  | 0  | 1  | 0  | 0  | F = (A + NOT(B)) PLUS 1 |
+| 0 | 0  | 0  | 1  | 1  | 0  | F = 0 |
+| 0 | 0  | 1  | 0  | 0  | 0  | F = A PLUS (A*NOT(B)) PLUS 1 |
+| 0 | 0  | 1  | 0  | 1  | 0  | F = (A+B) PLUS A*NOT(B) PLUS 1 |
+| 0 | 0  | 1  | 1  | 0  | 0  | F = A MINUS B |
+| 0 | 0  | 1  | 1  | 1  | 0  | F = A*NOT(B) |
+| 0 | 1  | 0  | 0  | 0  | 0  | F = A PLUS AB PLUS 1 |
+| 0 | 1  | 0  | 0  | 1  | 0  | F = A PLUS B PLUS 1 |
+| 0 | 1  | 0  | 1  | 0  | 0  | F = (A+NOT(B)) PLUS AB PLUS 1 |
+| 0 | 1  | 0  | 1  | 1  | 0  | F = AB |
+| 0 | 1  | 1  | 0  | 0  | 0  | F = A PLUS A PLUS 1 |
+| 0 | 1  | 1  | 0  | 1  | 0  | F = (A+B) PLUS A PLUS 1 |
+| 0 | 1  | 1  | 1  | 0  | 0  | F = (A+NOT(B)) PLUS A PLUS 1 |
+| 0 | 1  | 1  | 1  | 1  | 0  | F = A |
+| 0 | 0  | 0  | 0  | 0  | 1  | F = A |
+| 0 | 0  | 0  | 0  | 1  | 1  | F = A + B |
+| 0 | 0  | 0  | 1  | 0  | 1  | F = A + NOT(B) |
+| 0 | 0  | 0  | 1  | 1  | 1  | F = -1 |
+| 0 | 0  | 1  | 0  | 0  | 1  | F = A PLUS A*NOT(B) |
+| 0 | 0  | 1  | 0  | 1  | 1  | F = (A+B) PLUS A*NOT(B) |
+| 0 | 0  | 1  | 1  | 0  | 1  | F = A MINUS B MINUS 1 |
+| 0 | 0  | 1  | 1  | 1  | 1  | F = A*NOT(B) MINUS 1 |
+| 0 | 1  | 0  | 0  | 0  | 1  | F = A PLUS AB |
+| 0 | 1  | 0  | 0  | 1  | 1  | F = A PLUS B |
+| 0 | 1  | 0  | 1  | 0  | 1  | F = (A+NOT(B)) PLUS AB|
+| 0 | 1  | 0  | 1  | 1  | 1  | F = AB MINUS 1 |
+| 0 | 1  | 1  | 0  | 0  | 1  | F = A PLUS A |
+| 0 | 1  | 1  | 0  | 1  | 1  | F = (A+B) PLUS A |
+| 0 | 1  | 1  | 1  | 0  | 1  | F = (A+NOT(B) PLUS A |
+| 0 | 1  | 1  | 1  | 1  | 1  | F = A MINUS 1 |
+────────────────────────────────────────────────────────────────────
+Legenda:
+   X → valore indifferente
+   * → AND
+   + → OR
+   ⊕ → XOR
+   PLUS / MINUS → operazioni aritmetiche

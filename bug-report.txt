@@ -1,0 +1,20 @@
+
+BUG RISOLTI - Simulatore ALU
+
+1. [BUG #001] Interfaccia utente bloccata in caso di input non numerico
+   - Descrizione: Inserendo un carattere alfanumerico dove era previsto un numero, il simulatore andava in loop.
+   - Risoluzione: Implementata la validazione dell’input e gestione degli errori.
+
+2. [BUG #002] Miglioramento della gestione del buffer di input
+   - Descrizione: Il metodo precedente di pulizia del buffer (pulire_buffer()) poteva talvolta lasciare caratteri residui in memoria dopo l'uso di scanf().
+   - Risoluzione: La funzione è stata ottimizzata e ridefinita per svuotare il buffer fino al carattere di newline (\n) o al raggiungimento della fine del file (EOF), garantendo una pulizia più robusta e affidabile dell'interfaccia utente.
+
+3. [BUG #003] Overhead e Complessità del Codice
+   - Descrizione: Il codice presentava un eccessivo overhead dovuto a: a) Un sistema di delay complesso b) Una gestione dinamica della memoria non necessaria per i risultati temporanei
+   - Risoluzione: L'overhead è stato drasticamente ridotto tramite refactoring completo: il sistema di timing è stato sostituito con un modello scalabile e costante
+
+4. [BUG #004] Interazione Registro I/O Migliorata
+   - Descrizione: L'interazione tra i registri di uscita e il sistema I/O del codice non era ottimizzata
+   - Risoluzione: Le routine di aggiornamento e presentazione dei dati in uscita dai registri sono state armonizzate e semplificate
+NOTE FINALI:
+Tutti i bug noti sono stati risolti. Al momento non sono presenti malfunzionamenti critici rilevati nei test standard.
